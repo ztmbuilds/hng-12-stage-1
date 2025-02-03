@@ -1,10 +1,11 @@
 const app = require("express")();
 const axios = require("axios");
 
+//validation middleware
 const validation = (req, res, next) => {
   const num = req.query?.number;
-  console.log(num);
 
+  //check that number is a valid integer
   if (!num || isNaN(num) || !Number.isInteger(Number(num))) {
     return res.status(400).json({
       number: `${num}`,
@@ -20,10 +21,13 @@ app.get("/api/classify-number", validation, async (req, res) => {
 
   const abs = Math.abs(num);
 
+  //get array of digits
   const digitArray = abs.toString().split("").map(Number);
+  //add array of digits
   const digit_sum = digitArray.reduce((acc, currentValue) => {
     return acc + currentValue;
   }, 0);
+
   const properties = [];
   if (isArmstrong(num, digitArray)) properties.push("armstrong");
 
