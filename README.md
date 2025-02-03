@@ -2,10 +2,6 @@
 
 This project is a simple Express.js API that takes a number and returns interesting mathematical properties about it, along with a fun fact.
 
-## Setup
-
-1. Clone the repository:
-
 ## Getting Started
 
 ### Prerequisites
