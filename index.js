@@ -32,7 +32,8 @@ app.get("/api/classify-number", validation, async (req, res) => {
   if (isArmstrong(num, digitArray)) properties.push("armstrong");
 
   properties.push(isEvenOrOdd(abs));
-
+  res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET")
   return res.status(200).json({
     number: num,
     is_prime: isPrime(num) ? "true" : "false",
